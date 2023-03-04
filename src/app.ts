@@ -3,6 +3,7 @@ import connection from "./db/config";
 import { json, urlencoded } from "body-parser";
 import todoRoutes from "./routes/task";
 import userRoutes from './routes/users';
+import activityRoutes  from "./routes/activity";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(urlencoded({ extended: true }));
 
 app.use("/task", todoRoutes);
 app.use("/user", userRoutes);
+app.use('/activity', activityRoutes);
 
 app.use(
   (

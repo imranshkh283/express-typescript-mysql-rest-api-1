@@ -52,10 +52,36 @@ export class Activity extends Model {
         allowNull: false,
       })
     hour!: number;
+    
+    @Column({
+      type: DataType.DATE,
+      allowNull: false,
+    })
+    plannedStartDate!: number;
+
+    @Column({
+      type: DataType.DATE,
+      allowNull: false,
+    })
+    plannedEndDate!: number;
+
+    @Column({
+      type: DataType.DATE,
+      allowNull: false,
+    })
+    actualStartDate!: number;
+
+    @Column({
+      type: DataType.DATE,
+      allowNull: false,
+    })
+    actualEndDate!: number;
 
     @Column({
         type: DataType.DATE,
         allowNull: false,
       })
     createdAt!: number;
+    
+
 }
