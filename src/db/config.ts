@@ -1,14 +1,15 @@
 import { Sequelize } from "sequelize-typescript";
-import { Todos } from "../models/todos";
+import { Task } from "../models/task";
+import { Users } from '../models/users';
 
 const connection = new Sequelize({
   dialect: "mysql",
   host: "localhost",
   username: "root",
-  password: "anku@1234",
-  database: "todo",
+  password: "",
+  database: "test",
   logging: false,
-  models: [Todos],
+  models: [Task,Users],
 });
 
 export default connection;

@@ -1,9 +1,9 @@
 import { RequestHandler } from "express";
 
-import { Todos } from "../models/todos";
+import { Task } from "../models/task";
 
 export const createToDo: RequestHandler = async (req, res, next) => {
-  var todos = await Todos.create({ ...req.body });
+  var todos = await Task.create({ ...req.body });
   return res
     .status(200)
     .json({ message: "Todo created successfully", data: todos });
@@ -11,9 +11,9 @@ export const createToDo: RequestHandler = async (req, res, next) => {
 
 export const deleteToDo: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
-  const deletedTodo: Todos | null = await Todos.findByPk(id);
+  const deletedTodo: Task | null = await Task.findByPk(id);
 
-  await Todos.destroy({ where: { id } });
+  await Task.destroy({ where: { id } });
 
   return res
     .status(200)
@@ -21,7 +21,7 @@ export const deleteToDo: RequestHandler = async (req, res, next) => {
 };
 
 export const getAllToDo: RequestHandler = async (req, res, next) => {
-  const allTodos: Todos[] = await Todos.findAll();
+  const allTodos: Task[] = await Task.findAll();
 
   return res
     .status(200)
@@ -30,7 +30,7 @@ export const getAllToDo: RequestHandler = async (req, res, next) => {
 
 export const getTodoById: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
-  const todos: Todos | null = await Todos.findByPk(id);
+  const todos: Task | null = await Task.findByPk(id);
   return res
     .status(200)
     .json({ message: "Todo fetched successfully", data: todos });
@@ -38,8 +38,8 @@ export const getTodoById: RequestHandler = async (req, res, next) => {
 
 export const updateToDo: RequestHandler = async (req, res, next) => {
   const { id } = req.params;
-  await Todos.update({ ...req.body }, { where: { id } });
-  const updatedTodos: Todos | null = await Todos.findByPk(id);
+  await Task.update({ ...req.body }, { where: { id } });
+  const updatedTodos: Task | null = await Task.findByPk(id);
   return res
     .status(200)
     .json({ message: "Todo updated successfully", data: updatedTodos });

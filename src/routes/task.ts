@@ -6,7 +6,7 @@ import {
   getAllToDo,
   updateToDo,
   getTodoById,
-} from "../controller/todos";
+} from "../controller/task";
 
 const router = Router();
 
